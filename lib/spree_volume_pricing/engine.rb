@@ -4,7 +4,7 @@ module SpreeVolumePricing
     isolate_namespace Spree
     engine_name 'spree_volume_pricing'
 
-
+    Rails.application.config.after_initialize do
 
         initializer 'spree_volume_pricing.preferences', before: 'spree.environment' do
           Spree::Configuration.class_eval do
@@ -13,6 +13,7 @@ module SpreeVolumePricing
             preference :volume_pricing_role_dropship, :string, default: 'dropship'
           end
         end
+    end
     
     
     
